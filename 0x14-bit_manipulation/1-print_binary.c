@@ -1,22 +1,19 @@
-#include "main.h"
-
+#include "holberton.h"
 /**
- * get_bit - returns the value of a bit at a given index.
- * @n: checking bits
- * @index: which to check bit
- *
- * Return: the value of the bit at index
+ * print_binary -  prints the binary representation of a number
+ * @n: integer to convert
  */
-int get_bit(unsigned long int n, unsigned int index)
+void print_binary(unsigned long int n)
 {
-	unsigned long int div, res;
+	int i, flag;
 
-	if (index > (sizeof(unsigned long int) * 8 - 1))
-		return (-1);
-	div = 1 << index;
-	res = n & div;
-	if (res == div)
-		return (1);
-
-	return (0);
+	if (n == 0)
+		_putchar('0');
+	for (flag = 0, i = sizeof(n) * 8 - 1; i >= 0; i--)
+	{
+		if ((n >> i) & 1)
+			flag = 1;
+		if (flag == 1)
+			((n >> i) & 1) ? _putchar('1') : _putchar('0');
+	}
 }
